@@ -1,0 +1,146 @@
+<div class="row">
+  <div class="container">
+    <div class="booking-section">
+      <button id="viewBooking" class="btn btn-danger">View Booking</button>
+      <button id="viewBooking" class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" style="margin-left: 5px;">Book a meal</button>
+      <button id="viewBooking" class="btn btn-danger" style="margin-left: 5px;" (click)="cancelBooking()">Cancel Booking</button>
+      
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar [(selected)]="selected" [dateClass]="dateClassPredicate"></mat-calendar>
+        <p>Selected date: {{ selected | date: 'yyyy-MM-dd' }}</p>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-title" id="exampleModalLabel">
+          <span style="font-size: 20px; font-weight: 500">Book your meal</span><br />
+          <span style="font-size: 30px;padding-top: 10px ;font-weight: 700">New Booking</span><br />
+          <span><mat-icon style="color: brown; padding-top: 3px;">location_on</mat-icon>Vadodara</span>
+        </p>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;">Booking type</label><br>
+          <input type="radio" value="Lunch" style="vertical-align: middle;" name="recipient-name" [(ngModel)]="booking.booking_Type"/>
+          <label for="recipient-name" class="col-form-label" style="padding-left: 2px;">Lunch</label>
+          <input type="radio" value="Dinner" style="margin-left: 10px; vertical-align: middle;" name="recipient-name" [(ngModel)]="booking.booking_Type"/>
+          <label for="recipient-name" class="col-form-label" style="padding-left: 2px;">Dinner</label>
+        </div>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;">Select Days</label><br>     
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;">Start Date</label><br>     
+          <input type="date" style="height: 35px; background-color: aliceblue; border: 1px solid transparent; width: 100%;" placeholder="Enter a date range" [(ngModel)]="booking.start_Date">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;">End Date</label><br>     
+          <input type="date" style="height: 35px; background-color: aliceblue; border: 1px solid transparent; width: 100%;" placeholder="Enter a date range" [(ngModel)]="booking.end_Date">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="closebtn" type="button" class="btn btn-primary" style="width: 100%; background-color: orangered; border: none;" (click)="onSubmit()">Book</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="row">
+  <div class="container">
+    <div class="booking-section">
+      <button id="viewBooking" class="btn btn-danger">View Booking</button>
+
+      <button id="viewBooking" class="btn btn-primary" 
+      data-bs-target="#exampleModal"
+      data-bs-toggle="modal" style="margin-left: 5px;">Book a meal </button>
+
+      <button id="viewBooking" class="btn btn-danger" 
+        data-bs-toggle="modal" 
+        style="margin-left: 5px;" (click)="onCancelBooking()">
+        Cancel Booking
+      </button>
+
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar
+          [(selected)]="selected"
+          [dateClass]="dateClassPredicate"
+        ></mat-calendar>
+        <p>Selected date: {{ selected }}</p>
+        <h4></h4>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="date-day-section"></div>
+      <div class="card">
+        <p>Meal booked</p>
+      </div>
+      <div class="menu-section"></div>
+    </div>
+  </div>
+</div>
+<div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+     
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+      <div class="modal-body">
+        <p class="modal-title" id="exampleModalLabel">
+          <span style="font-size: 20px; font-weight: 500"
+            >Book your meal</span
+          ><br />
+          <span style="font-size: 30px;padding-top: 10px ;font-weight: 700"
+            >New Booking</span
+          ><br />
+          <span><mat-icon style="color: brown; padding-top: 3px;">location_on</mat-icon>Vadodara</span>
+        </p>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;">Booking type</label><br>
+          <input type="radio" value="Lunch" style="vertical-align: middle;" name="recipient-name" [(ngModel)]="booking.booking_Type"/>
+          <label for="recipient-name" class="col-form-label" style="padding-left: 2px;">Lunch</label>
+          <input type="radio" value="Dinner" style="margin-left: 10px; vertical-align: middle;" name="recipient-name" [(ngModel)]="booking.booking_Type"/>
+          <label for="recipient-name" class="col-form-label" style="padding-left: 2px; ">Dinner</label>
+        
+        </div>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;" >Select Days</label><br>     
+          <input type="date" style="height: 35px; background-color: aliceblue; border: 1px solid transparent; width: 100%;" placeholder="Enter a date range">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;" >Start Date</label><br>     
+          <input type="date" style="height: 35px; background-color: aliceblue; border: 1px solid transparent; width: 100%;" placeholder="Enter a date range"  [(ngModel)]="booking.start_Date">
+          <label for="recipient-name" class="col-form-label" style="font-size: large; font-weight: 200px;" >End Date</label><br>     
+          <input type="date" style="height: 35px; background-color: aliceblue; border: 1px solid transparent; width: 100%;" placeholder="Enter a date range"  [(ngModel)]="booking.end_Date">
+        </div>
+      </div>
+      <div class="modal-footer">
+        
+        
+        <button
+          id="closebtn" 
+          type="button"
+          class="btn btn-primary" style="width: 100%; background-color: orangered; border: none;"
+          (click)="onSubmit()"
+        >
+          Book
+        </button>
+      </div>
+    
+  </div>
+</div> -->
